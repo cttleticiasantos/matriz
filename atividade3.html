@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim</title>
+</head>
+<body>
+
+    <h1> Boletim</h1>
+    
+    <div id="dadosAlunos"></div>
+    <div id="resultados"></div>
+
+    <script>
+        let alunos = [];
+
+        for (let i = 0; i < 4; i++) {
+            var matricula = prompt("Digite o número de matrícula do aluno " + (i + 1) + ":");
+            var mediaFinal = prompt("Digite a média final do aluno " + (i + 1) + ":");
+            var porcentagemFrequencia = prompt("Digite a porcentagem de frequência do aluno " + (i + 1) + ":");
+
+            mediaFinal = parseFloat(mediaFinal);
+            porcentagemFrequencia = parseFloat(porcentagemFrequencia);
+
+            var aluno = {
+                matricula: matricula,
+                mediaFinal: mediaFinal,
+                porcentagemFrequencia: porcentagemFrequencia
+            };
+
+            alunos.push(aluno);
+        }
+
+        let dadosAlunosElement = document.getElementById('dadosAlunos');
+        dadosAlunosElement.innerHTML = "<h2>Dados dos alunos:</h2>";
+        for (let i = 0; i < alunos.length; i++) {
+            dadosAlunosElement.innerHTML += "<p>Matrícula: " + alunos[i].matricula + ", Média Final: " + alunos[i].mediaFinal + ", Porcentagem de Frequência: " + alunos[i].porcentagemFrequencia + "</p>";
+        }
+
+        let somaMediasFinais = 0;
+        for (let i = 0; i < alunos.length; i++) {
+            somaMediasFinais += alunos[i].mediaFinal;
+        }
+        const mediaMediasFinais = somaMediasFinais / alunos.length;
+
+        let somaPorcentagensFrequencia = 0;
+        for (let i = 0; i < alunos.length; i++) {
+            somaPorcentagensFrequencia += alunos[i].porcentagemFrequencia;
+        }
+        const mediaPorcentagensFrequencia = somaPorcentagensFrequencia / alunos.length;
+
+        let resultadosElement = document.getElementById('resultados');
+        resultadosElement.innerHTML = "<h2>Resultados:</h2>";
+        resultadosElement.innerHTML += "<p>Número total de alunos lidos: " + alunos.length + "</p>";
+        resultadosElement.innerHTML += "<p>Média das médias finais: " + mediaMediasFinais + "</p>";
+        resultadosElement.innerHTML += "<p>Média das porcentagens de frequência: " + mediaPorcentagensFrequencia + "</p>";
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Notas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Calculadora de Notas</h2>
+
+<script>
+  function calcularNota(gabarito, respostasAluno) {
+    let nota = 0;
+    for (let i = 0; i < gabarito.length; i++) {
+      if (gabarito[i] === respostasAluno[i]) {
+        nota++;
+      }
+    }
+    return nota;
+  }
+
+  function calcularNotas() {
+    const gabarito = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B'];
+    let totalAlunosAprovados = 0;
+    let somaNotas = 0;
+
+    while (true) {
+      const matricula = prompt('Digite o código de matrícula do aluno (ou digite "fim" para encerrar):');
+      if (matricula.toLowerCase() === 'fim') {
+        break;
+      }
+
+      const respostas = [];
+      for (let i = 0; i < gabarito.length; i++) {
+        respostas.push(prompt(`Digite a resposta da questão ${i + 1}:`).toUpperCase());
+      }
+
+      const notaAluno = calcularNota(gabarito, respostas);
+      const aprovado = notaAluno >= 7.0;
+
+      console.log(`Matrícula: ${matricula}, Nota: ${notaAluno.toFixed(1)}, Resultado: ${aprovado ? 'Aprovado' : 'Reprovado'}`);
+
+      somaNotas += notaAluno;
+      if (aprovado) {
+        totalAlunosAprovados++;
+      }
+    }
+
+    const mediaTurma = somaNotas / totalAlunosAprovados;
+
+    console.log(`\nTotal de alunos aprovados: ${totalAlunosAprovados}`);
+    console.log(`Média da turma: ${mediaTurma.toFixed(2)}`);
+  }
+
+  calcularNotas();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+</head>
+<body>
+
+<script>
+    let meses = [
+        { num: 1, mespt: "Janeiro", abrev: "Jan", meseng: "January" },
+        { num: 2, mespt: "Fevereiro", abrev: "Fev", meseng: "February" },
+        { num: 3, mespt: "Março", abrev: "Mar", meseng: "March" },
+        { num: 4, mespt: "Abril", abrev: "Abr", meseng: "April" },
+        { num: 5, mespt: "Maio", abrev: "Mai", meseng: "May" },
+        { num: 6, mespt: "Junho", abrev: "Jun", meseng: "June" },
+        { num: 7, mespt: "Julho", abrev: "Jul", meseng: "July" },
+        { num: 8, mespt: "Agosto", abrev: "Ago", meseng: "August" },
+        { num: 9, mespt: "Setembro", abrev: "Set", meseng: "September" },
+        { num: 10, mespt: "Outubro", abrev: "Out", meseng: "October" },
+        { num: 11, mespt: "Novembro", abrev: "Nov", meseng: "November" },
+        { num: 12, mespt: "Dezembro", abrev: "Dez", meseng: "December" }
+    ];
+
+    function imprimirMesInfo(numeroMes) {
+
+        let mes = meses.find(function (m) {
+            return m.num === numeroMes;
+        });
+
+        if (mes) {
+            alert(`${mes.num} - ${mes.mespt}, ${mes.abrev}, ${mes.meseng}`);
+        } else {
+            alert("Mês não encontrado.");
+        }
+    }
+
+    let numeroMesUsuario = prompt("Informe o número do mês desejado com números de 1 a 12:");
+    imprimirMesInfo(parseInt(numeroMesUsuario));
+</script>
+
+</body>
+</html>

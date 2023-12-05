@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz</title>
+</head>
+
+<body>
+
+    <h2>Matriz A:</h2>
+    <pre id="matrizA"></pre>
+
+    <h2>Matriz B (invertida de A):</h2>
+    <pre id="matrizB"></pre>
+
+    <script>
+        function criarMatrizB(matrizA) {
+            return matrizA[0].map((coluna, i) => matrizA.map(linha => linha[i]));
+        }
+
+        let matrizA = [
+            [20, 30, 40, 50, 60, 70],
+            [21, 31, 41, 51, 61, 71],
+            [22, 32, 42, 52, 62, 72],
+            [23, 33, 43, 53, 63, 73],
+            [33, 43, 53, 63, 73, 74]
+
+        ];
+
+        let matrizB = criarMatrizB(matrizA);
+
+        document.getElementById("matrizA").textContent = matrizA.map(row => row.join(' ')).join('\n');
+        document.getElementById("matrizB").textContent = matrizB.map(row => row.join(' ')).join('\n');
+    </script>
+</body>
+
+</html>
